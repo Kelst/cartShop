@@ -19,10 +19,10 @@ export default function CartItem({id,quantity}:CartItemProp) {
         <img src={item?.imgUrl} style={{width:"125px", height:"75px",objectFit:"cover"}}/>
         <div className='me-auto'>
             <div>{item?.name}{quantity>1&&(<span style={{fontSize:".85rem"}} className='text-muted'> {quantity}x</span>)} </div>
-            <div className="text-muted"  style={{fontSize:".95rem"}}>{formatCurrency(item?.price)}</div>
+            <div className="text-muted"  style={{fontSize:".95rem"}}>{formatCurrency(item?.price || 0 )}</div>
         </div>
-        <div className="text-muted"  style={{fontSize:".95rem"}}>{formatCurrency(item?.price*quantity)}</div>
-       <Button variant="outline-danger" size="sm" onClick={()=>removeFromCart(item.id)}>&times;</Button>
+        <div className="text-muted"  style={{fontSize:".95rem"}}>{formatCurrency(item?.price|| 0 *quantity)}</div>
+       <Button variant="outline-danger" size="sm" onClick={()=>removeFromCart(item?.id || 0 )}>&times;</Button>
     </Stack>
     </>
   );
